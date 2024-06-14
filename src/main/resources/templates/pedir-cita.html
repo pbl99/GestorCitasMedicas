@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<h1>Citas del usuario (aqui va el nombre del usuario )</h1>
+	<h3>Rellena el formulario de debajo para pedir cita</h3>
+	<form action="/pedirCita" method="post">
+		<div>
+			<label for="especialidad">Especialidad</label>
+			<div>
+				<input type="text" id="especialidad" name="especialidad">
+			</div>
+		</div>
+		<div>
+			<label for="medico">Medico</label>
+			<div>
+				<input type="text" id="medico" name="medico">
+			</div>
+		</div>
+		<div>
+			<label for="fecha">Fecha</label>
+			<div>
+				<input type="date" id="fecha" name="fecha">
+			</div>
+		</div>
+		<div>
+			<input type="button" value="Enviar">
+		</div>
+	</form>
+</body>
+
+</html>
