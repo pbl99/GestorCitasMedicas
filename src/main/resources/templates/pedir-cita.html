@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
@@ -9,23 +9,31 @@
 <body>
 	<h1>Citas del usuario (aqui va el nombre del usuario )</h1>
 	<h3>Rellena el formulario de debajo para pedir cita</h3>
-	<form action="/pedirCita" method="post">
+	<form th:action="@{/crear-cita}" th:object="${cita}" method="post">
 		<div>
 			<label for="especialidad">Especialidad</label>
-			<div>
-				<input type="text" id="especialidad" name="especialidad">
-			</div>
+			<select id="especialidad" th:field="*{especialidad}">
+				<option th:each="especialidad : ${especialidadesDisponibles}" th:value="${especialidad}"
+					th:text="${especialidad}"></option>
+			</select>
 		</div>
 		<div>
 			<label for="medico">Medico</label>
-			<div>
-				<input type="text" id="medico" name="medico">
-			</div>
+			<select id="medico" th:field="*{medico}">
+				<option th:each="medico : ${medicosDisponibles}" th:value="${medico}" th:text="${medico}">
+				</option>
+			</select>
 		</div>
 		<div>
 			<label for="fecha">Fecha</label>
+			<select id="fecha" th:field="*{fecha}">
+				<option th:each="fecha : ${fechasDisponibles}" th:value="${fecha}" th:text="${fecha}"></option>
+			</select>
+		</div>
+		<div>
+			<label for="descripcion">Descripcion</label>
 			<div>
-				<input type="date" id="fecha" name="fecha">
+				<input type="text" id="descripcion" name="descripcion">
 			</div>
 		</div>
 		<div>

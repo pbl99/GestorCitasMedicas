@@ -13,6 +13,9 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 
 	public void crearUsuario(Usuario usuario) {
+		if (usuarioRepository.findByDni(usuario.getDni()) != null) {
+			throw new IllegalArgumentException("El usuario ya está registrado.");
+		}
 		usuarioRepository.save(usuario);
 	}
 

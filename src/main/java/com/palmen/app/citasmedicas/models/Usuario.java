@@ -1,7 +1,10 @@
 package com.palmen.app.citasmedicas.models;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -12,7 +15,7 @@ import jakarta.validation.constraints.Size;
 public class Usuario {
 
 	@Id
-	@Size(max = 9)
+	@Size(min = 9, max = 9, message = "El Dni debe tener 9 dígitos")
 	private String dni;
 
 	@NotBlank
@@ -24,6 +27,9 @@ public class Usuario {
 	@NotNull
 	@Min(value = 18, message = "La edad debe ser mayor o igual a 18")
 	private Integer edad;
+
+	@Field("citas")
+	private List<Cita> citas;
 
 	public String getDni() {
 		return dni;

@@ -1,31 +1,18 @@
 package com.palmen.app.citasmedicas.models;
 
-import java.time.LocalDate;
-
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "citas")
 public class Cita {
 
-	private Usuario usuario;
-	private LocalDate fecha;
+	private String especialidad;
 	private String medico;
+	private String fecha;
 	private String descripcion;
 
-	public Usuario getUsuario() {
-		return usuario;
+	public String getEspecialidad() {
+		return especialidad;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public LocalDate getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
 	}
 
 	public String getMedico() {
@@ -34,6 +21,14 @@ public class Cita {
 
 	public void setMedico(String medico) {
 		this.medico = medico;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getDescripcion() {
