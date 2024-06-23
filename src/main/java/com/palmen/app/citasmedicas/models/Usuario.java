@@ -1,11 +1,10 @@
 package com.palmen.app.citasmedicas.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,8 +27,7 @@ public class Usuario {
 	@Min(value = 18, message = "La edad debe ser mayor o igual a 18")
 	private Integer edad;
 
-	@Field("citas")
-	private List<Cita> citas;
+	private List<Cita> citas = new ArrayList<>();
 
 	public String getDni() {
 		return dni;
@@ -61,6 +59,18 @@ public class Usuario {
 
 	public void setEdad(Integer edad) {
 		this.edad = edad;
+	}
+
+	public List<Cita> getCitas() {
+		return citas;
+	}
+
+	public void setCitas(List<Cita> citas) {
+		this.citas = citas;
+	}
+
+	public void addCita(Cita cita) {
+		this.citas.add(cita);
 	}
 
 }

@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<h1>Historial de citas de (nombre usuario)</h1>
-	</body>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ver Citas</title>
+</head>
+
+<body>
+	<h1>Historial de citas de <span th:text="${usuario.nombre + ' ' + usuario.apellidos}"></span></h1>
+	<div th:if="${citas != null}">
+		<ul>
+			<li th:each="cita : ${citas}">
+				<p>Especialidad: <span th:text="${cita.especialidad}"></span></p>
+				<p>Medico: <span th:text="${cita.medico}"></span></p>
+				<p>Fecha: <span th:text="${cita.fecha}"></span></p>
+				<p>Descripcion: <span th:text="${cita.descripcion}"></span></p>
+			</li>
+		</ul>
+	</div>
+	<div th:if="${citas == null || citas.isEmpty()}">
+		<p>No hay citas disponibles.</p>
+	</div>
+</body>
+
 </html>

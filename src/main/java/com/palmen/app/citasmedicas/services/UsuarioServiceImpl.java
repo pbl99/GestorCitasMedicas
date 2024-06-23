@@ -7,7 +7,7 @@ import com.palmen.app.citasmedicas.models.Usuario;
 import com.palmen.app.citasmedicas.repositories.UsuarioRepository;
 
 @Service
-public class UsuarioService {
+public class UsuarioServiceImpl implements IUsuarioService{
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -17,6 +17,10 @@ public class UsuarioService {
 			throw new IllegalArgumentException("El usuario ya está registrado.");
 		}
 		usuarioRepository.save(usuario);
+	}
+
+	public Usuario findByDniAndNombre(String dni, String nombre) {
+		return usuarioRepository.findByDniNombre(dni, nombre);
 	}
 
 }

@@ -8,8 +8,8 @@
 
 <body>
 	<h1>Obtener Cita</h1>
-	<h3>Para obtener cita con el médico, identifiquese como usuario</h3>
-
+	<h3>Para obtener cita con el médico, registrese como usuario, si ya está registrado o presione el enlace de debajo</h3>
+	<a href="login-usuario">Iniciar sesion</a>
 	<form th:action="@{/registrarUsuario}" th:object="${usuario}" method="post">
 		<div>
 			<label for="dni">Dni</label>

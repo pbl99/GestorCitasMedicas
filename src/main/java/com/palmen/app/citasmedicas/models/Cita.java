@@ -1,5 +1,6 @@
 package com.palmen.app.citasmedicas.models;
 
+
 public class Cita {
 
 	private String especialidad;

@@ -7,9 +7,9 @@
 </head>
 
 <body>
-	<h1>Citas del usuario (aqui va el nombre del usuario )</h1>
-	<h3>Rellena el formulario de debajo para pedir cita</h3>
-	<form th:action="@{/crear-cita}" th:object="${cita}" method="post">
+	<h1>Bienvenid@ <span th:text=${usuario.nombre}></span> aquí puedes pedir cita con el médico o consultar tu historial de citas</h1>
+	<h3>Rellena el formulario de debajo para pedir cita, consulta aquí tu historial <a href="/historialCitas">Ver citas</a></h3>
+	<form th:action="@{/procesarPedirCita}" th:object="${cita}" method="post">
 		<div>
 			<label for="especialidad">Especialidad</label>
 			<select id="especialidad" th:field="*{especialidad}">
@@ -33,11 +33,11 @@
 		<div>
 			<label for="descripcion">Descripcion</label>
 			<div>
-				<input type="text" id="descripcion" name="descripcion">
+				<input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}">
 			</div>
 		</div>
 		<div>
-			<input type="button" value="Enviar">
+			<input type="submit" value="Enviar">
 		</div>
 	</form>
 </body>
