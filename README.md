@@ -56,6 +56,7 @@ Modifica el archivo `application.properties` y  `application-mongodb.properties`
 ```properties
 spring.data.mongodb.uri=mongodb://127.0.0.1:27017/GestionarCitasMedicas
 spring.profiles.active=mongodb
+```
 
 ## Contribución
 
