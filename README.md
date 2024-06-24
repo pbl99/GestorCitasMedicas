@@ -46,9 +46,10 @@ Sigue estos pasos para configurar y ejecutar el proyecto localmente.
     mvn clean install
     ```
 
+## Configuración
+
 3. Configura la base de datos MongoDB. Asegúrate de tener MongoDB en funcionamiento y configurado según tus necesidades.
 
-## Configuración
 
 Modifica el archivo `application.properties` y  `application-mongodb.properties` para configurar tu base de datos y otros parámetros de la aplicación:
 
@@ -57,9 +58,11 @@ spring.data.mongodb.uri=mongodb://127.0.0.1:27017/GestionarCitasMedicas
 spring.profiles.active=mongodb
 
 ## Contribución
+
 - Si deseas contribuir al proyecto, realiza un fork y envía un pull request con tus cambios.
 - Asegúrate de seguir las convenciones de codificación y las prácticas recomendadas.
 
 ## Licencia
+
 Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
 
