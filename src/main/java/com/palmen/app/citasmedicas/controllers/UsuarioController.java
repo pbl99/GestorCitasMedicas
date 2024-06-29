@@ -8,8 +8,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.palmen.app.citasmedicas.models.Usuario;
+import com.palmen.app.citasmedicas.models.UsuarioLoginDTO;
 import com.palmen.app.citasmedicas.services.IUsuarioService;
 
 import jakarta.servlet.http.HttpSession;
@@ -54,7 +54,7 @@ public class UsuarioController {
 	 */
 	@GetMapping("/login-usuario")
 	public String loginUsuario(Model model) {
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("usuarioLogin", new UsuarioLoginDTO());
 		return "login";
 	}
 
@@ -62,22 +62,22 @@ public class UsuarioController {
 	 * Valida las credenciales del usuario.
 	 */
 	@PostMapping("/validarUsuario")
-	public String validarUsuario(@RequestParam("dni") String dni, @RequestParam("nombre") String nombre,
-			HttpSession session) {
-		// Verifica que tanto el DNI como el nombre estén presentes
-		if (dni != null && nombre != null) {
-			Usuario usuario = usuarioService.findByDniAndNombre(dni, nombre);
+	public String validarUsuario(@Valid @ModelAttribute("usuarioLogin") UsuarioLoginDTO usuarioLoginDTO,
+			BindingResult result, HttpSession session, Model model) {
 
-			// Si se encuentra el usuario, se guarda en la sesión y redirige a la página de
-			// pedir cita
-			if (usuario != null) {
-				session.setAttribute("usuario", usuario);
-				return "redirect:/mostrarPedirCita";
-			} else {
-				return "redirect:/login-usuario";
-			}
-		} else {
-			return "redirect:/login-usuario";
+		if (result.hasErrors()) {
+			return "login";
 		}
+		// Verifica que tanto el DNI como el nombre estén presentes
+		Usuario usuario = usuarioService.findByDniAndNombre(usuarioLoginDTO.getDni(), usuarioLoginDTO.getNombre());
+
+		// Si se encuentra el usuario, se guarda en la sesión y redirige a la página de
+		// pedir cita
+		if (usuario != null) {
+			session.setAttribute("usuario", usuario);
+			return "redirect:/mostrarPedirCita";
+		}
+		model.addAttribute("error", "El dni y el nombre no corresponden con un usuario registrado");
+		return "login";
 	}
 }

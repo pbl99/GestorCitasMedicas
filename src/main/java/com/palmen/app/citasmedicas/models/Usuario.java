@@ -8,22 +8,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 
 @Document(collection = "usuarios")
 public class Usuario {
 
 	@Id
-	@Size(min = 9, max = 9, message = "El Dni debe tener 9 dígitos")
+	@Pattern(regexp = "^[0-9]{8}[A-Za-z]$", message = "El DNI debe tener 8 dígitos y una letra al final")
 	private String dni;
 
-	@NotBlank
+	@NotBlank(message = "El nombre no puede estar vacío")
 	private String nombre;
 
-	@NotBlank
+	@NotBlank(message = "Los apellidos no pueden estar vacíos")
 	private String apellidos;
 
-	@NotNull
+	@NotNull(message = "La edad no puede ser nula")
 	@Min(value = 18, message = "La edad debe ser mayor o igual a 18")
 	private Integer edad;
 
