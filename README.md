@@ -37,7 +37,7 @@ Sigue estos pasos para configurar y ejecutar el proyecto localmente.
 
 1. Clona el repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/citas-medicas.git
+    git clone https://github.com/pbl99/GestorCitasMedicas.git
     cd citas-medicas
     ```
 
